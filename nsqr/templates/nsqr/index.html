@@ -1,0 +1,28 @@
+{% extends "nsqr/base.html" %}
+
+{% block content %}
+    <div class = "container-fluid form-control" style="display: flex; flex-direction: row">
+        <div class="container-fluid" style="justify-content: center">
+            <h2>Queue:</h2>
+            {% for task in tasks %}
+                <div>
+                    <hr>
+                    <p>Address: {{ task.address }}</p>
+                    <p>Status: {{ task.get_task_status_display }}</p>
+                    <p>Time: {{ task.timestamp }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container-fluid" style="justify-content: end">
+            <h2>Results:</h2>
+            {% for result in results %}
+                <div>
+                    <hr>
+                    <p>Address: {{ result.address }}</p>
+                    <p>Words count: {{ result.words_count }}</p>
+                    <p>Status: {{ result.status }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
